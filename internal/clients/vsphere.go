@@ -15,7 +15,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/terraform"
 
-	"github.com/upbound/upjet-provider-template/apis/v1beta1"
+	"github.com/AitorLeon89/provider-vsphere/apis/v1beta1"
 )
 
 const (
@@ -24,8 +24,15 @@ const (
 	errGetProviderConfig    = "cannot get referenced ProviderConfig"
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
-	errUnmarshalCredentials = "cannot unmarshal template credentials as JSON"
+	errUnmarshalCredentials = "cannot unmarshal vsphere credentials as JSON"
+
+        keyUser = "user"
+        keyPassword = "password"
+        keyVsphere_server = "vsphere_server"
+
 )
+
+
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
 // returns Terraform provider setup configuration
@@ -67,6 +74,27 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 			"username": creds["username"],
 			"password": creds["password"],
 		}*/
+
+
+                // set provider configuration
+                ps.Configuration = map[string]any{}
+                if v, ok := creds[keyUser]; ok {
+                    ps.Configuration[keyUser] = v
+                }
+                if v, ok := creds[keyPassword]; ok {
+                   ps.Configuration[keyPassword] = v
+                }
+                if v, ok := creds[keyVsphere_server]; ok {
+                   ps.Configuration[keyVsphere_server] = v
+                }
+
+/*		ps.Configuration = map[string]any{
+			"username": creds["username"],
+			"password": creds["password"],
+                        "vsphere_server": creds["vsphere_server"],
+                        "allow_unverified_ssl": creds["allow_unverified_ssl"],
+		}
+*/
 		return ps, nil
 	}
 }
