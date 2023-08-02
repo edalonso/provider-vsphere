@@ -9,7 +9,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/controller"
 
-	resource "github.com/AitorLeon89/provider-vsphere/internal/controller/null/resource"
+	license "github.com/AitorLeon89/provider-vsphere/internal/controller/license/license"
 	providerconfig "github.com/AitorLeon89/provider-vsphere/internal/controller/providerconfig"
 )
 
@@ -17,7 +17,7 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		license.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

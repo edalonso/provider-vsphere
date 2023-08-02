@@ -10,7 +10,7 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/AitorLeon89/provider-vsphere/apis/null/v1alpha1"
+	v1alpha1 "github.com/AitorLeon89/provider-vsphere/apis/license/v1alpha1"
 	v1alpha1apis "github.com/AitorLeon89/provider-vsphere/apis/v1alpha1"
 	v1beta1 "github.com/AitorLeon89/provider-vsphere/apis/v1beta1"
 )
