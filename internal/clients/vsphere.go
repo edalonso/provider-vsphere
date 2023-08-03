@@ -29,7 +29,7 @@ const (
         keyUser = "user"
         keyPassword = "password"
         keyVsphere_server = "vsphere_server"
-
+        keyallow_unverified_ssl = "allow_unverified_ssl"
 )
 
 
@@ -87,14 +87,17 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
                 if v, ok := creds[keyVsphere_server]; ok {
                    ps.Configuration[keyVsphere_server] = v
                 }
+                if v, ok := creds[keyallow_unverified_ssl]; ok {
+                   ps.Configuration[keyallow_unverified_ssl] = v
+                }
 
-/*		ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-                        "vsphere_server": creds["vsphere_server"],
-                        "allow_unverified_ssl": creds["allow_unverified_ssl"],
-		}
-*/
+		//ps.Configuration = map[string]any{
+		//	"username": creds["username"],
+		//	"password": creds["password"],
+                //        "vsphere_server": creds["vsphere_server"],
+                //        "allow_unverified_ssl": creds["allow_unverified_ssl"],
+		//}
+
 		return ps, nil
 	}
 }

@@ -10,8 +10,8 @@ import "github.com/upbound/upjet/pkg/config"
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
-//	"vsphere_license": config.IdentifierFromProvider,
-        "vsphere_license": config.ParameterAsIdentifier("license_key"),
+	"vsphere_license": config.IdentifierFromProvider,
+//        "vsphere_license": config.ParameterAsIdentifier("license_key"),
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the

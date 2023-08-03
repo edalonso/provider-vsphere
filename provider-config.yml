@@ -1,0 +1,13 @@
+apiVersion: vsphere.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  labels:
+    app.kubernetes.io/instance: vsphere
+  name: vsphere-provider
+spec:
+  credentials:
+    secretRef:
+      key: creds
+      name: vsphere-account-creds
+      namespace: cicd
+    source: Secret

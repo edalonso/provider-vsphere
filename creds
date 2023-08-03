@@ -1,0 +1,1 @@
+{"user": "user", "password": "pass", "vsphere_server": "vcsim-service.cicd.svc.cluster.local", "allow_unverified_ssl": "true"}
