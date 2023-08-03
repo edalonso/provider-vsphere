@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vcsim
+  labels:
+    app: vcsim
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vcsim
+  template:
+    metadata:
+      labels:
+        app: vcsim
+    spec:
+      containers:
+      - name: vcsim
+        image: dcr.disashop.team/devops/vcsim:v0.1.0
+        ports:
+        - containerPort: 443
+        env:
+        - name: GOVC_URL
+          value: "https://user:pass@0.0.0.0:443"
+      imagePullSecrets:
+      - name: disa-reg-cred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vcsim-service
+spec:
+  selector:
+    app: vcsim
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+
