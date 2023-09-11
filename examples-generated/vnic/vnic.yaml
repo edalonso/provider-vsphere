@@ -1,0 +1,52 @@
+apiVersion: vnic.vsphere.upbound.io/v1alpha1
+kind: Vnic
+metadata:
+  annotations:
+    meta.upbound.io/example-id: vnic/v1alpha1/vnic
+  labels:
+    testing.upbound.io/example-name: v1
+  name: v1
+spec:
+  forProvider:
+    distributedPortGroup: ${vsphere_distributed_port_group.p1.id}
+    distributedSwitchPort: ${vsphere_distributed_virtual_switch.d1.id}
+    host: ${data.vsphere_host.h1.id}
+    ipv4:
+    - dhcp: true
+    netstack: vmotion
+
+---
+
+apiVersion: distributedportgroup.vsphere.upbound.io/v1alpha1
+kind: PortGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: vnic/v1alpha1/vnic
+  labels:
+    testing.upbound.io/example-name: p1
+  name: p1
+spec:
+  forProvider:
+    distributedVirtualSwitchUuid: ${vsphere_distributed_virtual_switch.d1.id}
+    vlanId: 1234
+
+---
+
+apiVersion: distributedvirtualswitch.vsphere.upbound.io/v1alpha1
+kind: VirtualSwitch
+metadata:
+  annotations:
+    meta.upbound.io/example-id: vnic/v1alpha1/vnic
+  labels:
+    testing.upbound.io/example-name: d1
+  name: d1
+spec:
+  forProvider:
+    datacenterId: ${data.vsphere_datacenter.dc.id}
+    host:
+    - devices:
+      - vnic3
+      hostSystemId: ${data.vsphere_host.h1.id}
+
+---
+

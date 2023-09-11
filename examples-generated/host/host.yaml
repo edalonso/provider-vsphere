@@ -1,0 +1,23 @@
+apiVersion: host.vsphere.upbound.io/v1alpha1
+kind: Host
+metadata:
+  annotations:
+    meta.upbound.io/example-id: host/v1alpha1/host
+  labels:
+    testing.upbound.io/example-name: esx-01
+  name: esx-01
+spec:
+  forProvider:
+    datacenterSelector:
+      matchLabels:
+        testing.upbound.io/example-name: vsphere_datacenter
+    license: 00000-00000-00000-00000-00000
+    passwordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    thumbprint: ${data.vsphere_host_thumbprint.thumbprint.id}
+    username: root
+
+---
+

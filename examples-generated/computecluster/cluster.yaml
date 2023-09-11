@@ -1,0 +1,19 @@
+apiVersion: computecluster.vsphere.upbound.io/v1alpha1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computecluster/v1alpha1/cluster
+  labels:
+    testing.upbound.io/example-name: compute_cluster
+  name: compute-cluster
+spec:
+  forProvider:
+    datacenterId: ${data.vsphere_datacenter.datacenter.id}
+    drsAutomationLevel: fullyAutomated
+    drsEnabled: true
+    haEnabled: true
+    hostSystemIds:
+    - ${data.vsphere_host.host.*.id}
+
+---
+

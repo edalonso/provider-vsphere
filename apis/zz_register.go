@@ -10,17 +10,93 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/AitorLeon89/provider-vsphere/apis/license/v1alpha1"
+	v1alpha1 "github.com/AitorLeon89/provider-vsphere/apis/computecluster/v1alpha1"
+	v1alpha1computeclusterhostgroup "github.com/AitorLeon89/provider-vsphere/apis/computeclusterhostgroup/v1alpha1"
+	v1alpha1computeclustervmaffinityrule "github.com/AitorLeon89/provider-vsphere/apis/computeclustervmaffinityrule/v1alpha1"
+	v1alpha1computeclustervmantiaffinityrule "github.com/AitorLeon89/provider-vsphere/apis/computeclustervmantiaffinityrule/v1alpha1"
+	v1alpha1computeclustervmdependencyrule "github.com/AitorLeon89/provider-vsphere/apis/computeclustervmdependencyrule/v1alpha1"
+	v1alpha1computeclustervmgroup "github.com/AitorLeon89/provider-vsphere/apis/computeclustervmgroup/v1alpha1"
+	v1alpha1computeclustervmhostrule "github.com/AitorLeon89/provider-vsphere/apis/computeclustervmhostrule/v1alpha1"
+	v1alpha1contentlibrary "github.com/AitorLeon89/provider-vsphere/apis/contentlibrary/v1alpha1"
+	v1alpha1contentlibraryitem "github.com/AitorLeon89/provider-vsphere/apis/contentlibraryitem/v1alpha1"
+	v1alpha1customattribute "github.com/AitorLeon89/provider-vsphere/apis/customattribute/v1alpha1"
+	v1alpha1datacenter "github.com/AitorLeon89/provider-vsphere/apis/datacenter/v1alpha1"
+	v1alpha1datastorecluster "github.com/AitorLeon89/provider-vsphere/apis/datastorecluster/v1alpha1"
+	v1alpha1datastoreclustervmantiaffinityrule "github.com/AitorLeon89/provider-vsphere/apis/datastoreclustervmantiaffinityrule/v1alpha1"
+	v1alpha1distributedportgroup "github.com/AitorLeon89/provider-vsphere/apis/distributedportgroup/v1alpha1"
+	v1alpha1distributedvirtualswitch "github.com/AitorLeon89/provider-vsphere/apis/distributedvirtualswitch/v1alpha1"
+	v1alpha1dpmhostoverride "github.com/AitorLeon89/provider-vsphere/apis/dpmhostoverride/v1alpha1"
+	v1alpha1drsvmoverride "github.com/AitorLeon89/provider-vsphere/apis/drsvmoverride/v1alpha1"
+	v1alpha1entitypermissions "github.com/AitorLeon89/provider-vsphere/apis/entitypermissions/v1alpha1"
+	v1alpha1file "github.com/AitorLeon89/provider-vsphere/apis/file/v1alpha1"
+	v1alpha1folder "github.com/AitorLeon89/provider-vsphere/apis/folder/v1alpha1"
+	v1alpha1havmoverride "github.com/AitorLeon89/provider-vsphere/apis/havmoverride/v1alpha1"
+	v1alpha1host "github.com/AitorLeon89/provider-vsphere/apis/host/v1alpha1"
+	v1alpha1hostportgroup "github.com/AitorLeon89/provider-vsphere/apis/hostportgroup/v1alpha1"
+	v1alpha1hostvirtualswitch "github.com/AitorLeon89/provider-vsphere/apis/hostvirtualswitch/v1alpha1"
+	v1alpha1license "github.com/AitorLeon89/provider-vsphere/apis/license/v1alpha1"
+	v1alpha1nasdatastore "github.com/AitorLeon89/provider-vsphere/apis/nasdatastore/v1alpha1"
+	v1alpha1resourcepool "github.com/AitorLeon89/provider-vsphere/apis/resourcepool/v1alpha1"
+	v1alpha1role "github.com/AitorLeon89/provider-vsphere/apis/role/v1alpha1"
+	v1alpha1storagedrsvmoverride "github.com/AitorLeon89/provider-vsphere/apis/storagedrsvmoverride/v1alpha1"
+	v1alpha1tag "github.com/AitorLeon89/provider-vsphere/apis/tag/v1alpha1"
+	v1alpha1tagcategory "github.com/AitorLeon89/provider-vsphere/apis/tagcategory/v1alpha1"
 	v1alpha1apis "github.com/AitorLeon89/provider-vsphere/apis/v1alpha1"
 	v1beta1 "github.com/AitorLeon89/provider-vsphere/apis/v1beta1"
+	v1alpha1vappcontainer "github.com/AitorLeon89/provider-vsphere/apis/vappcontainer/v1alpha1"
+	v1alpha1vappentity "github.com/AitorLeon89/provider-vsphere/apis/vappentity/v1alpha1"
+	v1alpha1virtualdisk "github.com/AitorLeon89/provider-vsphere/apis/virtualdisk/v1alpha1"
+	v1alpha1virtualmachine "github.com/AitorLeon89/provider-vsphere/apis/virtualmachine/v1alpha1"
+	v1alpha1virtualmachinesnapshot "github.com/AitorLeon89/provider-vsphere/apis/virtualmachinesnapshot/v1alpha1"
+	v1alpha1vmfsdatastore "github.com/AitorLeon89/provider-vsphere/apis/vmfsdatastore/v1alpha1"
+	v1alpha1vmstoragepolicy "github.com/AitorLeon89/provider-vsphere/apis/vmstoragepolicy/v1alpha1"
+	v1alpha1vnic "github.com/AitorLeon89/provider-vsphere/apis/vnic/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1computeclusterhostgroup.SchemeBuilder.AddToScheme,
+		v1alpha1computeclustervmaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1computeclustervmantiaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1computeclustervmdependencyrule.SchemeBuilder.AddToScheme,
+		v1alpha1computeclustervmgroup.SchemeBuilder.AddToScheme,
+		v1alpha1computeclustervmhostrule.SchemeBuilder.AddToScheme,
+		v1alpha1contentlibrary.SchemeBuilder.AddToScheme,
+		v1alpha1contentlibraryitem.SchemeBuilder.AddToScheme,
+		v1alpha1customattribute.SchemeBuilder.AddToScheme,
+		v1alpha1datacenter.SchemeBuilder.AddToScheme,
+		v1alpha1datastorecluster.SchemeBuilder.AddToScheme,
+		v1alpha1datastoreclustervmantiaffinityrule.SchemeBuilder.AddToScheme,
+		v1alpha1distributedportgroup.SchemeBuilder.AddToScheme,
+		v1alpha1distributedvirtualswitch.SchemeBuilder.AddToScheme,
+		v1alpha1dpmhostoverride.SchemeBuilder.AddToScheme,
+		v1alpha1drsvmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1entitypermissions.SchemeBuilder.AddToScheme,
+		v1alpha1file.SchemeBuilder.AddToScheme,
+		v1alpha1folder.SchemeBuilder.AddToScheme,
+		v1alpha1havmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1host.SchemeBuilder.AddToScheme,
+		v1alpha1hostportgroup.SchemeBuilder.AddToScheme,
+		v1alpha1hostvirtualswitch.SchemeBuilder.AddToScheme,
+		v1alpha1license.SchemeBuilder.AddToScheme,
+		v1alpha1nasdatastore.SchemeBuilder.AddToScheme,
+		v1alpha1resourcepool.SchemeBuilder.AddToScheme,
+		v1alpha1role.SchemeBuilder.AddToScheme,
+		v1alpha1storagedrsvmoverride.SchemeBuilder.AddToScheme,
+		v1alpha1tag.SchemeBuilder.AddToScheme,
+		v1alpha1tagcategory.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1vappcontainer.SchemeBuilder.AddToScheme,
+		v1alpha1vappentity.SchemeBuilder.AddToScheme,
+		v1alpha1virtualdisk.SchemeBuilder.AddToScheme,
+		v1alpha1virtualmachine.SchemeBuilder.AddToScheme,
+		v1alpha1virtualmachinesnapshot.SchemeBuilder.AddToScheme,
+		v1alpha1vmfsdatastore.SchemeBuilder.AddToScheme,
+		v1alpha1vmstoragepolicy.SchemeBuilder.AddToScheme,
+		v1alpha1vnic.SchemeBuilder.AddToScheme,
 	)
 }
 

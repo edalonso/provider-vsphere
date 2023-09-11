@@ -1,0 +1,39 @@
+apiVersion: storagedrsvmoverride.vsphere.upbound.io/v1alpha1
+kind: DrsVMOverride
+metadata:
+  annotations:
+    meta.upbound.io/example-id: storagedrsvmoverride/v1alpha1/drsvmoverride
+  labels:
+    testing.upbound.io/example-name: drs_vm_override
+  name: drs-vm-override
+spec:
+  forProvider:
+    datastoreClusterId: ${data.vsphere_datastore_cluster.datastore_cluster.id}
+    sdrsEnabled: false
+    virtualMachineId: ${vsphere_virtual_machine.vm.id}
+
+---
+
+apiVersion: virtualmachine.vsphere.upbound.io/v1alpha1
+kind: Machine
+metadata:
+  annotations:
+    meta.upbound.io/example-id: storagedrsvmoverride/v1alpha1/drsvmoverride
+  labels:
+    testing.upbound.io/example-name: vm
+  name: vm
+spec:
+  forProvider:
+    datastoreId: ${data.vsphere_datastore.member_datastore.id}
+    disk:
+    - label: disk0
+      size: 20
+    guestId: other3xLinux64Guest
+    memory: 1024
+    networkInterface:
+    - networkId: ${data.vsphere_network.network.id}
+    numCpus: 2
+    resourcePoolId: ${data.vsphere_resource_pool.pool.id}
+
+---
+

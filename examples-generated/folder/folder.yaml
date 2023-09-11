@@ -1,0 +1,16 @@
+apiVersion: folder.vsphere.upbound.io/v1alpha1
+kind: Folder
+metadata:
+  annotations:
+    meta.upbound.io/example-id: folder/v1alpha1/folder
+  labels:
+    testing.upbound.io/example-name: folder
+  name: folder
+spec:
+  forProvider:
+    datacenterId: ${data.vsphere_datacenter.dc.id}
+    path: terraform-test-folder
+    type: vm
+
+---
+

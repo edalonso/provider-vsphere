@@ -1,0 +1,18 @@
+apiVersion: tagcategory.vsphere.upbound.io/v1alpha1
+kind: Category
+metadata:
+  annotations:
+    meta.upbound.io/example-id: tagcategory/v1alpha1/category
+  labels:
+    testing.upbound.io/example-name: category
+  name: category
+spec:
+  forProvider:
+    associableTypes:
+    - VirtualMachine
+    - Datastore
+    cardinality: SINGLE
+    description: Managed by Terraform
+
+---
+

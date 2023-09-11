@@ -1,0 +1,23 @@
+apiVersion: virtualmachine.vsphere.upbound.io/v1alpha1
+kind: Machine
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualmachine/v1alpha1/machine
+  labels:
+    testing.upbound.io/example-name: vm
+  name: vm
+spec:
+  forProvider:
+    datastoreId: ${data.vsphere_datastore.datastore.id}
+    disk:
+    - label: disk0
+      size: 20
+    guestId: other3xLinux64Guest
+    memory: 1024
+    networkInterface:
+    - networkId: ${data.vsphere_network.network.id}
+    numCpus: 1
+    resourcePoolId: ${data.vsphere_compute_cluster.cluster.resource_pool_id}
+
+---
+

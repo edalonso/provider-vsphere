@@ -1,0 +1,17 @@
+apiVersion: license.vsphere.upbound.io/v1alpha1
+kind: License
+metadata:
+  annotations:
+    meta.upbound.io/example-id: license/v1alpha1/license
+  labels:
+    testing.upbound.io/example-name: licenseKey
+  name: licensekey
+spec:
+  forProvider:
+    labels:
+    - VpxClientLicenseLabel: Hello World
+      Workflow: Hello World
+    licenseKey: 452CQ-2EK54-K8742-00000-00000
+
+---
+

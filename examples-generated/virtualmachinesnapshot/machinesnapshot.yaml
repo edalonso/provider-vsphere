@@ -1,0 +1,20 @@
+apiVersion: virtualmachinesnapshot.vsphere.upbound.io/v1alpha1
+kind: MachineSnapshot
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualmachinesnapshot/v1alpha1/machinesnapshot
+  labels:
+    testing.upbound.io/example-name: demo1
+  name: demo1
+spec:
+  forProvider:
+    consolidate: "true"
+    description: This is Demo Snapshot
+    memory: "true"
+    quiesce: "true"
+    removeChildren: "false"
+    snapshotName: Snapshot Name
+    virtualMachineUuid: 9aac5551-a351-4158-8c5c-15a71e8ec5c9
+
+---
+

@@ -1,0 +1,17 @@
+apiVersion: contentlibraryitem.vsphere.upbound.io/v1alpha1
+kind: LibraryItem
+metadata:
+  annotations:
+    meta.upbound.io/example-id: contentlibraryitem/v1alpha1/libraryitem
+  labels:
+    testing.upbound.io/example-name: content_library_item
+  name: content-library-item
+spec:
+  forProvider:
+    description: Ubuntu Server LTS OVF Template
+    fileUrl: https://releases.example.com/ubuntu/ubuntu/ubuntu-live-server-amd64.ovf
+    libraryId: ${data.vsphere_content_library.content_library.id}
+    name: ovf-linux-ubuntu-server-lts
+
+---
+

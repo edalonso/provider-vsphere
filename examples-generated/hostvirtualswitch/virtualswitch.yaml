@@ -1,0 +1,21 @@
+apiVersion: hostvirtualswitch.vsphere.upbound.io/v1alpha1
+kind: VirtualSwitch
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostvirtualswitch/v1alpha1/virtualswitch
+  labels:
+    testing.upbound.io/example-name: switch
+  name: switch
+spec:
+  forProvider:
+    activeNics:
+    - vmnic0
+    hostSystemId: ${data.vsphere_host.host.id}
+    networkAdapters:
+    - vmnic0
+    - vmnic1
+    standbyNics:
+    - vmnic1
+
+---
+

@@ -1,0 +1,18 @@
+apiVersion: virtualdisk.vsphere.upbound.io/v1alpha1
+kind: Disk
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualdisk/v1alpha1/disk
+  labels:
+    testing.upbound.io/example-name: virtual_disk
+  name: virtual-disk
+spec:
+  forProvider:
+    createDirectories: true
+    datacenter: ${data.vsphere_datacenter.datacenter.name}
+    datastore: ${data.vsphere_datastore.datastore.name}
+    size: 40
+    type: thin
+
+---
+

@@ -1,0 +1,20 @@
+apiVersion: nasdatastore.vsphere.upbound.io/v1alpha1
+kind: Datastore
+metadata:
+  annotations:
+    meta.upbound.io/example-id: nasdatastore/v1alpha1/datastore
+  labels:
+    testing.upbound.io/example-name: datastore
+  name: datastore
+spec:
+  forProvider:
+    hostSystemIds:
+    - ${data.vsphere_host.esxi_hosts.*.id}
+    name: terraform-test
+    remoteHosts:
+    - nfs
+    remotePath: /export/terraform-test
+    type: NFS
+
+---
+

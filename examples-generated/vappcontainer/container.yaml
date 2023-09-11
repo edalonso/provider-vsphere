@@ -1,0 +1,15 @@
+apiVersion: vappcontainer.vsphere.upbound.io/v1alpha1
+kind: Container
+metadata:
+  annotations:
+    meta.upbound.io/example-id: vappcontainer/v1alpha1/container
+  labels:
+    testing.upbound.io/example-name: vapp_container
+  name: vapp-container
+spec:
+  forProvider:
+    name: vapp-01
+    parentResourcePoolId: ${data.vsphere_compute_cluster.compute_cluster.resource_pool_id}
+
+---
+

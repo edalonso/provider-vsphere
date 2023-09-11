@@ -1,0 +1,36 @@
+apiVersion: hostportgroup.vsphere.upbound.io/v1alpha1
+kind: PortGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostportgroup/v1alpha1/portgroup
+  labels:
+    testing.upbound.io/example-name: pg
+  name: pg
+spec:
+  forProvider:
+    hostSystemId: ${data.vsphere_host.host.id}
+    virtualSwitchName: ${vsphere_host_virtual_switch.host_virtual_switch.name}
+
+---
+
+apiVersion: hostvirtualswitch.vsphere.upbound.io/v1alpha1
+kind: VirtualSwitch
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostportgroup/v1alpha1/portgroup
+  labels:
+    testing.upbound.io/example-name: host_virtual_switch
+  name: host-virtual-switch
+spec:
+  forProvider:
+    activeNics:
+    - vmnic0
+    hostSystemId: ${data.vsphere_host.host.id}
+    networkAdapters:
+    - vmnic0
+    - vmnic1
+    standbyNics:
+    - vmnic1
+
+---
+

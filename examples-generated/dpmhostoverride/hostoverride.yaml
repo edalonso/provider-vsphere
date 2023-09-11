@@ -1,0 +1,35 @@
+apiVersion: dpmhostoverride.vsphere.upbound.io/v1alpha1
+kind: HostOverride
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dpmhostoverride/v1alpha1/hostoverride
+  labels:
+    testing.upbound.io/example-name: dpm_host_override
+  name: dpm-host-override
+spec:
+  forProvider:
+    computeClusterId: ${vsphere_compute_cluster.compute_cluster.id}
+    dpmAutomationLevel: automated
+    dpmEnabled: true
+    hostSystemId: ${data.vsphere_host.hosts.0.id}
+
+---
+
+apiVersion: computecluster.vsphere.upbound.io/v1alpha1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: dpmhostoverride/v1alpha1/hostoverride
+  labels:
+    testing.upbound.io/example-name: compute_cluster
+  name: compute-cluster
+spec:
+  forProvider:
+    datacenterId: ${data.vsphere_datacenter.dc.id}
+    drsAutomationLevel: fullyAutomated
+    drsEnabled: true
+    hostSystemIds:
+    - ${data.vsphere_host.hosts.*.id}
+
+---
+

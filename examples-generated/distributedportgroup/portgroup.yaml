@@ -1,0 +1,50 @@
+apiVersion: distributedportgroup.vsphere.upbound.io/v1alpha1
+kind: PortGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: distributedportgroup/v1alpha1/portgroup
+  labels:
+    testing.upbound.io/example-name: pg
+  name: pg
+spec:
+  forProvider:
+    distributedVirtualSwitchUuid: ${vsphere_distributed_virtual_switch.vds.id}
+    vlanId: 1000
+
+---
+
+apiVersion: distributedvirtualswitch.vsphere.upbound.io/v1alpha1
+kind: VirtualSwitch
+metadata:
+  annotations:
+    meta.upbound.io/example-id: distributedportgroup/v1alpha1/portgroup
+  labels:
+    testing.upbound.io/example-name: vds
+  name: vds
+spec:
+  forProvider:
+    activeUplinks:
+    - uplink1
+    - uplink2
+    datacenterId: ${data.vsphere_datacenter.datacenter.id}
+    host:
+    - devices:
+      - ${var.network_interfaces}
+      hostSystemId: ${data.vsphere_host.host.0.id}
+    - devices:
+      - ${var.network_interfaces}
+      hostSystemId: ${data.vsphere_host.host.1.id}
+    - devices:
+      - ${var.network_interfaces}
+      hostSystemId: ${data.vsphere_host.host.2.id}
+    standbyUplinks:
+    - uplink3
+    - uplink4
+    uplinks:
+    - uplink1
+    - uplink2
+    - uplink3
+    - uplink4
+
+---
+

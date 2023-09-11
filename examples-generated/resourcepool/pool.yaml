@@ -1,0 +1,15 @@
+apiVersion: resourcepool.vsphere.upbound.io/v1alpha1
+kind: Pool
+metadata:
+  annotations:
+    meta.upbound.io/example-id: resourcepool/v1alpha1/pool
+  labels:
+    testing.upbound.io/example-name: resource_pool
+  name: resource-pool
+spec:
+  forProvider:
+    name: resource-pool-01
+    parentResourcePoolId: ${data.vsphere_compute_cluster.compute_cluster.resource_pool_id}
+
+---
+

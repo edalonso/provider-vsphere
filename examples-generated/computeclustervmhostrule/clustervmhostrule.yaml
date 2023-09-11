@@ -1,0 +1,74 @@
+apiVersion: computeclustervmhostrule.vsphere.upbound.io/v1alpha1
+kind: ClusterVMHostRule
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclustervmhostrule/v1alpha1/clustervmhostrule
+  labels:
+    testing.upbound.io/example-name: cluster_vm_host_rule
+  name: cluster-vm-host-rule
+spec:
+  forProvider:
+    affinityHostGroupName: terraform-test-cluster-host-group
+    computeClusterId: ${data.vsphere_compute_cluster.cluster.id}
+    name: terraform-test-cluster-vm-host-rule
+    vmGroupName: terraform-test-cluster-vm-group
+
+---
+
+apiVersion: computeclusterhostgroup.vsphere.upbound.io/v1alpha1
+kind: ClusterHostGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclustervmhostrule/v1alpha1/clustervmhostrule
+  labels:
+    testing.upbound.io/example-name: cluster_host_group
+  name: cluster-host-group
+spec:
+  forProvider:
+    computeClusterId: ${data.vsphere_compute_cluster.cluster.id}
+    hostSystemIds:
+    - ${data.vsphere_host.host.id}
+    name: terraform-test-cluster-vm-group
+
+---
+
+apiVersion: computeclustervmgroup.vsphere.upbound.io/v1alpha1
+kind: ClusterVMGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclustervmhostrule/v1alpha1/clustervmhostrule
+  labels:
+    testing.upbound.io/example-name: cluster_vm_group
+  name: cluster-vm-group
+spec:
+  forProvider:
+    computeClusterId: ${data.vsphere_compute_cluster.cluster.id}
+    name: terraform-test-cluster-vm-group
+    virtualMachineIds:
+    - ${vsphere_virtual_machine.vm.id}
+
+---
+
+apiVersion: virtualmachine.vsphere.upbound.io/v1alpha1
+kind: Machine
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclustervmhostrule/v1alpha1/clustervmhostrule
+  labels:
+    testing.upbound.io/example-name: vm
+  name: vm
+spec:
+  forProvider:
+    datastoreId: ${data.vsphere_datastore.datastore.id}
+    disk:
+    - label: disk0
+      size: 20
+    guestId: other3xLinux64Guest
+    memory: 2048
+    networkInterface:
+    - networkId: ${data.vsphere_network.network.id}
+    numCpus: 2
+    resourcePoolId: ${data.vsphere_compute_cluster.cluster.resource_pool_id}
+
+---
+

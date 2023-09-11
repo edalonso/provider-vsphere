@@ -1,0 +1,14 @@
+apiVersion: customattribute.vsphere.upbound.io/v1alpha1
+kind: Attribute
+metadata:
+  annotations:
+    meta.upbound.io/example-id: customattribute/v1alpha1/attribute
+  labels:
+    testing.upbound.io/example-name: attribute
+  name: attribute
+spec:
+  forProvider:
+    managedObjectType: VirtualMachine
+
+---
+

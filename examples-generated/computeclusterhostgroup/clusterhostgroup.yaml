@@ -1,0 +1,36 @@
+apiVersion: computeclusterhostgroup.vsphere.upbound.io/v1alpha1
+kind: ClusterHostGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclusterhostgroup/v1alpha1/clusterhostgroup
+  labels:
+    testing.upbound.io/example-name: cluster_host_group
+  name: cluster-host-group
+spec:
+  forProvider:
+    computeClusterId: ${vsphere_compute_cluster.compute_cluster.id}
+    hostSystemIds:
+    - ${data.vsphere_host.hosts.*.id}
+    name: terraform-test-cluster-host-group
+
+---
+
+apiVersion: computecluster.vsphere.upbound.io/v1alpha1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: computeclusterhostgroup/v1alpha1/clusterhostgroup
+  labels:
+    testing.upbound.io/example-name: compute_cluster
+  name: compute-cluster
+spec:
+  forProvider:
+    datacenterId: ${data.vsphere_datacenter.dc.id}
+    drsAutomationLevel: fullyAutomated
+    drsEnabled: true
+    haEnabled: true
+    hostSystemIds:
+    - ${data.vsphere_host.hosts.*.id}
+
+---
+
