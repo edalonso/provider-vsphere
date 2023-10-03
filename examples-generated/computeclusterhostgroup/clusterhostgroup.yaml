@@ -31,6 +31,7 @@ spec:
     haEnabled: true
     hostSystemIds:
     - ${data.vsphere_host.hosts.*.id}
+    name: terraform-compute-cluster-test
 
 ---
 

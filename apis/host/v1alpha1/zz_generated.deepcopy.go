@@ -146,6 +146,11 @@ func (in *HostParameters) DeepCopyInto(out *HostParameters) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Hostname != nil {
+		in, out := &in.Hostname, &out.Hostname
+		*out = new(string)
+		**out = **in
+	}
 	if in.License != nil {
 		in, out := &in.License, &out.License
 		*out = new(string)

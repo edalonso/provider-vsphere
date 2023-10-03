@@ -71,6 +71,11 @@ type HostParameters struct {
 	// +kubebuilder:validation:Optional
 	Force *bool `json:"force,omitempty" tf:"force,omitempty"`
 
+	// FQDN or IP address of the host to be added.
+	// FQDN or IP address of the host.
+	// +kubebuilder:validation:Required
+	Hostname *string `json:"hostname" tf:"hostname,omitempty"`
+
 	// The license key that will be applied to the host.
 	// The license key is expected to be present in vSphere.
 	// License key that will be applied to this host.

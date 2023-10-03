@@ -383,6 +383,11 @@ func (in *ClusterParameters) DeepCopyInto(out *ClusterParameters) {
 			}
 		}
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.ProactiveHaAutomationLevel != nil {
 		in, out := &in.ProactiveHaAutomationLevel, &out.ProactiveHaAutomationLevel
 		*out = new(string)

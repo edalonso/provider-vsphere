@@ -4,16 +4,17 @@ metadata:
   annotations:
     meta.upbound.io/example-id: vmfsdatastore/v1alpha1/datastore
   labels:
-    testing.upbound.io/example-name: datastore
-  name: datastore
+    testing.upbound.io/example-name: datastore1
+  name: datastore1
 spec:
   forProvider:
     disks:
-    - mpx.vmhba1:C0:T1:L0
-    - mpx.vmhba1:C0:T2:L0
-    - mpx.vmhba1:C0:T2:L0
-    hostSystemId: ${data.vsphere_host.esxi_host.id}
-    name: terraform-test
-
+    - mpx.vmhba1:C0:T0:L0
+#    - mpx.vmhba1:C0:T2:L0
+#    - mpx.vmhba1:C0:T2:L0
+    hostSystemId: host-227
+    name: datastore1
+  providerConfigRef:
+    name: vsphere-provider
 ---
 

@@ -9,7 +9,8 @@ metadata:
 spec:
   forProvider:
     name: vapp-01
-    parentResourcePoolId: ${data.vsphere_compute_cluster.compute_cluster.resource_pool_id}
-
+    parentResourcePoolId: resgroup-291
+  providerConfigRef:
+    name: vsphere-provider
 ---
 

@@ -3,17 +3,19 @@ kind: Cluster
 metadata:
   annotations:
     meta.upbound.io/example-id: computecluster/v1alpha1/cluster
+    crossplane.io/external-name: domain-c290
   labels:
-    testing.upbound.io/example-name: compute_cluster
-  name: compute-cluster
+    testing.upbound.io/example-name: cluster01
+  name: cluster01
 spec:
   forProvider:
-    datacenterId: ${data.vsphere_datacenter.datacenter.id}
-    drsAutomationLevel: fullyAutomated
-    drsEnabled: true
-    haEnabled: true
+    datacenterId: datacenter-18
+    #drsEnabled: false
+    #haEnabled: false
+    #vsanEnabled: false
     hostSystemIds:
-    - ${data.vsphere_host.host.*.id}
-
+    name: Cluster01
+  providerConfigRef:
+    name: vsphere-provider
 ---
 

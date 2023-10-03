@@ -376,6 +376,11 @@ type ClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	HostSystemIds []*string `json:"hostSystemIds,omitempty" tf:"host_system_ids,omitempty"`
 
+	// The name of the cluster.
+	// Name for the new cluster.
+	// +kubebuilder:validation:Required
+	Name *string `json:"name" tf:"name,omitempty"`
+
 	// Determines how the host
 	// quarantine, maintenance mode, or virtual machine migration recommendations
 	// made by proactive HA are to be handled. Can be one of Automated or

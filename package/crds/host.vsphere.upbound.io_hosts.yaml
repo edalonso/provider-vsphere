@@ -177,6 +177,10 @@ spec:
                       to the vSphere inventory even if it's already managed by a different
                       vCenter Server instance.
                     type: boolean
+                  hostname:
+                    description: FQDN or IP address of the host to be added. FQDN
+                      or IP address of the host.
+                    type: string
                   license:
                     description: The license key that will be applied to the host.
                       The license key is expected to be present in vSphere. License
@@ -230,6 +234,7 @@ spec:
                       to the host. Username of the administration account of the host.
                     type: string
                 required:
+                - hostname
                 - passwordSecretRef
                 - username
                 type: object
