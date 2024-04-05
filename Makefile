@@ -4,13 +4,13 @@
 PROJECT_NAME ?= provider-vsphere
 PROJECT_REPO ?= github.com/AitorLeon89/provider-vsphere
 
-export TERRAFORM_VERSION ?= 1.3.3
+export TERRAFORM_VERSION ?= 1.7.5
 
 export TERRAFORM_PROVIDER_SOURCE ?= hashicorp/vsphere
 export TERRAFORM_PROVIDER_REPO ?= https://github.com/hashicorp/terraform-provider-vsphere
-export TERRAFORM_PROVIDER_VERSION ?= 2.3.1
+export TERRAFORM_PROVIDER_VERSION ?= 2.7.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME ?= terraform-provider-vsphere
-export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-vsphere_v2.3.1_x5
+export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-vsphere_v2.7.0
 export TERRAFORM_DOCS_PATH ?= website/docs/r
 
 PLATFORMS ?= linux_amd64 linux_arm64

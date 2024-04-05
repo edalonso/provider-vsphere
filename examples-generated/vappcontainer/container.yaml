@@ -4,12 +4,16 @@ metadata:
   annotations:
     meta.upbound.io/example-id: vappcontainer/v1alpha1/container
   labels:
-    testing.upbound.io/example-name: vapp_container
-  name: vapp-container
+    testing.upbound.io/example-name: vapp_02
+  name: vapp-02
 spec:
   forProvider:
-    name: vapp-01
+    name: vapp-02
     parentResourcePoolId: resgroup-291
+    properties:
+      guestinfo.ignition.config.data.encoding: "gzip+base64"
+    customAttributes:
+      additionalProperties: "guestinfo.ignition.config.data.encoding"
   providerConfigRef:
     name: vsphere-provider
 ---

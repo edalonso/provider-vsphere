@@ -44,7 +44,7 @@ var ExternalNameConfigs = map[string]config.ExternalName{
         "vsphere_resource_pool": config.IdentifierFromProvider,
         "vsphere_virtual_disk": config.ParameterAsIdentifier("vmdk_path"),
         "vsphere_vapp_entity": config.IdentifierFromProvider,
-        "vsphere_virtual_machine": config.TemplatedStringAsIdentifier("name","/{{ .parameter.datacenter_id }}/vm/{{ .externalName }}"),
+        "vsphere_virtual_machine": config.IdentifierFromProvider,
         "vsphere_virtual_machine_snapshot": config.IdentifierFromProvider,
         "vsphere_vapp_container": config.IdentifierFromProvider,
         "vsphere_content_library_item": config.IdentifierFromProvider,
